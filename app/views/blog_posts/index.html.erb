@@ -1,9 +1,7 @@
 <p id="notice"><%= notice %></p>
 <div class= "row">
-      <h1 class= "text-centered">Blog Posts</h1>
-    </div>
-  <div class= "row">
-    <%= link_to 'Write a new post', new_blog_post_path, class: "btn btn-info" %>
+      <h1 class= "text-center">Blog Posts</h1>
+       <p class= "text-center"> <%= link_to 'Write a new post', new_blog_post_path, class: "btn btn-info" %></p>
   </div>
   <div class="row">
     <% @blog_posts.each do |blog_post| %>
@@ -15,12 +13,13 @@
           <div class='panel-body'>
             <p>By: <%= blog_post.user.username %></p>
             <p>Posted on: <%= blog_post.created_at.localtime.strftime("%c") %></p>
-         <p><%= blog_post.blog_entry %></p>
+         <p><%= blog_post.blog_entry[0..300] %>...<%= link_to "READ MORE", blog_post %></p>
           </div>
           <div class="panel-footer">
-            <%= link_to 'Show', blog_post, class: "btn btn-info" %> 
+            <% if current_user.id == blog_post.user_id %>
             <%= link_to 'Edit', edit_blog_post_path(blog_post), class: "btn btn-success" %> 
             <%= link_to 'Delete', blog_post, class: "btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %>
+            <% end %>
 
          </div>
        </div>

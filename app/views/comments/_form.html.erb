@@ -13,8 +13,8 @@
   <% end %>
 
 <div class = "row">
-  <div class= "col-md-12">
-    <h4>Comments</h4>
+  <div class= "col-md-10 col-md-offset-1">
+    <h4 class="text-center">Comments</h4>
     <div class="form-group">
         <%= f.hidden_field :user_id, value: current_user.id %>
     </div>
@@ -25,11 +25,11 @@
         <%= f.hidden_field :blog_post_id, value: @blog_post.id %>
     </div>
     <div class="actions">
-       <%= f.submit %>
+      <p> <%= f.submit %> </p>
     </div>
   </div>
 </div>
 <% end %>
-<p> </p>
+
 
 
