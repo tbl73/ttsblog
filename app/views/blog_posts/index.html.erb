@@ -1,0 +1,32 @@
+<p id="notice"><%= notice %></p>
+<div class= "row">
+      <h1 class= "text-centered">Blog Posts</h1>
+    </div>
+  <div class= "row">
+    <%= link_to 'Write a new post', new_blog_post_path, class: "btn btn-info" %>
+  </div>
+  <div class="row">
+    <% @blog_posts.each do |blog_post| %>
+      <div class= "col-md-12">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <%= blog_post.title %>
+          </div>
+          <div class='panel-body'>
+            <p>By: <%= blog_post.user.username %></p>
+            <p>Posted on: <%= blog_post.created_at.localtime.strftime("%c") %></p>
+         <p><%= blog_post.blog_entry %></p>
+          </div>
+          <div class="panel-footer">
+            <%= link_to 'Show', blog_post, class: "btn btn-info" %> 
+            <%= link_to 'Edit', edit_blog_post_path(blog_post), class: "btn btn-success" %> 
+            <%= link_to 'Delete', blog_post, class: "btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %>
+
+         </div>
+       </div>
+      </div>
+    <% end %>
+  </div>
+
+
+

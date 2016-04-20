@@ -1,0 +1,45 @@
+<p id="notice"><%= notice %></p>
+<div class= "col-md-12">
+	<div class= "panel panel-info">
+		<div class= "panel-body">
+			<p>
+			  <strong>Title:</strong>
+			  <%= @blog_post.title %>
+			</p>
+
+			<p>
+			  <strong>Author:</strong>
+			  <%= @blog_post.user.username %>
+			</p>
+
+			<p>
+			  Posted on: <%= @blog_post.created_at.localtime.strftime("%c") %>
+			</p>
+
+			<p>
+			  <strong>Blog entry:</strong>
+			  <%= @blog_post.blog_entry %>
+			</p>
+		</div>	
+	</div>
+			<%= link_to 'Edit', edit_blog_post_path(@blog_post), class: "btn btn-info" %> 
+			<%= link_to 'Back', blog_posts_path, class: "btn btn-info" %>
+
+</div>
+
+<div>
+	<%= render 'comments/form' %>
+</div>
+<div class= "col-md-12">
+	<div class= "panel panel-info">
+	<% @blog_post.comments.each do |comment| %>
+		<div class= "panel-heading">
+			On <%= @blog_post.created_at.localtime.strftime("%c") %>, <strong><%= comment.user.username %></strong> says...
+		</div>
+		<div class= "panel-body">
+			<%= comment.comment_entry %>
+		</div>
+		<% end %>
+	</div>
+</div>
+
